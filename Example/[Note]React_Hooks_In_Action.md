@@ -136,6 +136,34 @@ The  ```useState``` lets us ask React to manage single values for our component.
    
 
 
+## Ch6: Managing componet state with the useRef hook
+
+useRef
+- its ```current``` property could store the value
+   - But change the ```current``` property doesn't cause a re-render of the component.
+- A call to useRef will return the same ref object each time the component runs,
+   - Persist values in the ref across renders by assigning them to the ref's ```current``` property
+- React can automatically assign  DOM element references to your ref's ```current``` property
+
+Example:
+```
+const myRef = useRef(); //create the red
+...
+return(
+   <button ref={myRef}> Click Me! </button>      // specify the red in the JSX ref attribute
+);
+
+myRef.current;          //The current property will now reference the button element
+```
 
 
+ Note:
+- Use the ref to interactive with DOM element
+   - Set th focus on the element
+   ```
+   myRef.current.focus();
+   ```
+- Component that read their state from the DOM are called uncontrolled components. We can use refs to access and update the state.
+- React recommends you use controlled components.
+   - Use the useState hook or the useReducer hook to manage the state and get React to update the DOM with the latest state value. 
 
