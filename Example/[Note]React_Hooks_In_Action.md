@@ -133,7 +133,35 @@ The  ```useState``` lets us ask React to manage single values for our component.
  
  ![image](https://user-images.githubusercontent.com/9137836/121764557-64f11500-cb77-11eb-8560-dcdddf6596b7.png)
 
-   
+
+## Ch5: Working with side effects
+- recognizing types of side effects in components
+- wrapping side effects with useEffect hook
+- controlling when an effect runs by specyfing a depency list 
+- returning a clean up function from an effect 
+- using an effect to fetch data for a component
+
+React builds the tree of elements, compares it with what's already rendered and commits any necessary changes to the DOM.
+When state changes, React goes through the process again to update the UI. 
+
+Sometimes, we need our components to reach outside of this data flow process and directly interact with other APIs.
+Common side effects include:
+- Setting the page title imperatively
+- Working withe timers
+- Measuring the width or height 
+- Logging messages to the console or other device
+- Setting and Getting values in local storage
+- Fetching data or subscribing and unscribing to services
+
+
+https://codesandbox.io/s/windowsize-gn80v?file=/src/App.js:324-348
+
+With a cleanup function
+https://codesandbox.io/s/windowsizecleanup-b8wii
+
+
+
+
 
 
 ## Ch6: Managing componet state with the useRef hook
@@ -167,3 +195,29 @@ myRef.current;          //The current property will now reference the button ele
 - React recommends you use controlled components.
    - Use the useState hook or the useReducer hook to manage the state and get React to update the DOM with the latest state value. 
 
+
+
+## Ch7 : Managing application state
+
+- passing shared state to those components that need it
+- coping when state isn't passed down - the props are missing 
+- lifting state up the component tree to make it more widely available
+- passing dispatch and updater functions to child components
+- calling dispatch and updater functions to update parent state
+- considering dispatch and updater functions as despendencies of effects
+
+
+
+![image](https://user-images.githubusercontent.com/9137836/121767433-c2429180-cb8a-11eb-8345-bbb098b26987.png)
+
+
+A cool way to return DOM element
+```
+return bookable ?( 
+   {hasDetails &&(
+   <div>
+   
+   </div>
+   )}
+ ): null;
+```
